@@ -12,6 +12,12 @@ import Games from "./pages/Games";
 import MPSCoinMining from "./pages/projects/MPSCoinMining";
 import MPSToken from "./pages/projects/MPSToken";
 import NFTs from "./pages/projects/NFTs";
+import DAPP from "./pages/projects/DAPP";
+import MPSSwap from "./pages/projects/MPSSwap";
+import MPSBlockchain from "./pages/projects/MPSBlockchain";
+import MUSD from "./pages/projects/MUSD";
+import MPSLottery from "./pages/projects/MPSLottery";
+import AIRobot from "./pages/projects/AIRobot";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +36,12 @@ const App = () => (
           <Route path="/mps-coin-mining" element={<MPSCoinMining />} />
           <Route path="/mps-token" element={<MPSToken />} />
           <Route path="/nfts" element={<NFTs />} />
+          <Route path="/dapp" element={<DAPP />} />
+          <Route path="/mps-swap" element={<MPSSwap />} />
+          <Route path="/mps-blockchain" element={<MPSBlockchain />} />
+          <Route path="/musd" element={<MUSD />} />
+          <Route path="/mps-lottery" element={<MPSLottery />} />
+          <Route path="/ai-robot" element={<AIRobot />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
