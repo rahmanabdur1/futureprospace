@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { FileDown } from "lucide-react";
 import heroBackground from "@/assets/hero-bg.jpg";
 
 export const HeroSection = () => {
@@ -82,27 +82,27 @@ export const HeroSection = () => {
           Await!
         </p>
 
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button
-            size="lg"
-            className="text-lg px-8 py-6 glow-effect animate-pulse-glow group"
+        {/* PDF Button */}
+        <div className="flex justify-center gap-4">
+          <h2 className=" text-3xl md:text-4xl font-bold  mb-1 gradient-primary bg-clip-text text-transparent">
+            Registration Starts In
+          </h2>
+          <a
+            href="/Future-Pro.Space.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Registration
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="text-lg px-8 py-6 border-primary/50 hover:border-primary"
-          >
-            Learn More
-          </Button>
+            <Button
+              size="lg"
+              className="text-lg px-8 py-6 glow-effect animate-pulse-glow group"
+            >
+              Download PDF
+              <FileDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+            </Button>
+          </a>
         </div>
 
-        {/* Countdown Timer */}
-        <div className="mt-12 flex justify-center gap-6 text-center">
+        <div className="mt-10 flex justify-center gap-6 text-center">
           {[
             { label: "Days", value: timeLeft.days },
             { label: "Hours", value: timeLeft.hours },
