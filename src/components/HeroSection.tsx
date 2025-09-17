@@ -73,7 +73,7 @@ export const HeroSection = () => {
         <h1 className="text-5xl md:text-7xl font-bold mb-6 text-glow">
           Enter the gateway of{" "}
           <span className="gradient-primary bg-clip-text text-transparent">
-            Blockchain Platform
+            Future Pro Space Blockchain Platform
           </span>
         </h1>
 
