@@ -120,8 +120,8 @@ export const HeroSection = () => {
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+        {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="glass-card p-6 rounded-lg text-center">
             <div className="text-3xl font-bold text-primary mb-2">10+</div>
             <div className="text-muted-foreground">Potential Projects</div>
@@ -134,7 +134,7 @@ export const HeroSection = () => {
             <div className="text-3xl font-bold text-primary mb-2">400K</div>
             <div className="text-muted-foreground">Investors</div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
