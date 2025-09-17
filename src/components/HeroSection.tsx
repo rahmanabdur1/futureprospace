@@ -77,10 +77,7 @@ export const HeroSection = () => {
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-3xl mx-auto">
-          Unlock the Power of Decentralization—NFTs, Tokens, Coins, and Mining
-          Await!
-        </p>
+       
 
         {/* PDF Button */}
         <div className="flex justify-center gap-4">

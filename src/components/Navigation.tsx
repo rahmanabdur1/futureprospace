@@ -29,8 +29,8 @@ export const Navigation = () => {
             </div>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
+   
+          {/* <div className="hidden md:flex items-center space-x-6">
             <a
               href="/"
               className="text-foreground hover:text-primary transition-colors"
@@ -50,7 +50,7 @@ export const Navigation = () => {
               Foundation
             </a>
 
-            {/* Projects Dropdown */}
+        
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
                 Projects <ChevronDown className="ml-1 h-4 w-4" />
@@ -122,9 +122,9 @@ export const Navigation = () => {
             >
               Registration
             </Button>
-          </div>
+          </div> 
 
-          {/* Mobile Menu Button */}
+           */}
           <button
             className="md:hidden text-foreground"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -143,7 +143,7 @@ export const Navigation = () => {
               >
                 Home
               </a>
-              <a
+              {/* <a
                 href="/academy"
                 className="text-foreground hover:text-primary transition-colors"
               >
@@ -169,7 +169,7 @@ export const Navigation = () => {
               </a>
               <Button variant="default" className="w-full">
                 Registration
-              </Button>
+              </Button> */}
             </div>
           </div>
         )}

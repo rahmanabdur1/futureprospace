@@ -42,7 +42,7 @@ const App = () => (
           <Route path="/musd" element={<MUSD />} />
           <Route path="/mps-lottery" element={<MPSLottery />} />
           <Route path="/ai-robot" element={<AIRobot />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+  
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
