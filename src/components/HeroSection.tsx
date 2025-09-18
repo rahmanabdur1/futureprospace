@@ -140,6 +140,9 @@
 //   );
 // };
 
+
+
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -148,42 +151,36 @@ import { FileDown } from "lucide-react";
 import heroBackground from "@/assets/hero-bg.jpg";
 
 export const HeroSection = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 45,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  // শুরু তারিখ নির্ধারণ
+  const startDate = new Date("2025-09-18T21:11:00");
+  // 45 দিনের কাউন্টডাউন শেষ হবে
+  const targetDate = new Date(startDate.getTime() + 45 * 24 * 60 * 60 * 1000);
+
+  // বাকি সময় হিসাব করার ফাংশন
+  const calculateTimeLeft = () => {
+    const now = new Date();
+    const difference = targetDate.getTime() - now.getTime();
+
+    if (difference <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    // Target date (45 days from now)
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 45);
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
 
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = targetDate.getTime() - now;
-
-      if (distance <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      setTimeLeft({ days, hours, minutes, seconds });
-    };
-
-    // Run immediately + update every second
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
   const isFinished =
@@ -192,12 +189,14 @@ export const HeroSection = () => {
     timeLeft.minutes === 0 &&
     timeLeft.seconds === 0;
 
+  if (isFinished) return null;
+
   return (
     <section
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBackground})` }}
@@ -213,8 +212,8 @@ export const HeroSection = () => {
           </span>
         </h1>
 
-        <div className="flex justify-center gap-4">
-          <h2 className=" text-3xl md:text-4xl font-bold mb-1 gradient-primary bg-clip-text text-transparent">
+        <div className="flex justify-center gap-4 mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold gradient-primary bg-clip-text text-transparent">
             Registration Starts In
           </h2>
           <a
@@ -233,23 +232,26 @@ export const HeroSection = () => {
         </div>
 
         {/* Countdown */}
-        {!isFinished && (
-          <div className="mt-10 flex justify-center gap-4 text-center">
-            {Object.entries(timeLeft).map(([label, value]) => (
-              <div
-                key={label}
-                className="glass-card px-6 py-4 rounded-xl glow-effect"
-              >
-                <div className="text-5xl font-bold text-primary mb-2">
-                  {value.toString().padStart(2, "0")}
-                </div>
-                <div className="text-sm uppercase tracking-wide text-muted-foreground">
-                  {label}
-                </div>
+        <div className="mt-10 flex justify-center gap-6 text-center">
+          {[
+            { label: "Days", value: timeLeft.days },
+            { label: "Hours", value: timeLeft.hours },
+            { label: "Minutes", value: timeLeft.minutes },
+            { label: "Seconds", value: timeLeft.seconds },
+          ].map((unit) => (
+            <div
+              key={unit.label}
+              className="glass-card px-6 py-4 rounded-xl glow-effect"
+            >
+              <div className="text-5xl font-bold text-primary mb-2">
+                {unit.value.toString().padStart(2, "0")}
               </div>
-            ))}
-          </div>
-        )}
+              <div className="text-sm uppercase tracking-wide text-muted-foreground">
+                {unit.label}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
